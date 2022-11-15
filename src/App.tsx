@@ -1,24 +1,27 @@
-import React from 'react';
+import React, { useState } from 'react';
 import logo from './logo.svg';
 import './App.css';
 
+type TPoint = {
+  x: number;
+  y: number;
+};
+
+
 function App() {
+  const [points, setPoints] = useState<TPoint[]>([]);
+
+  function handlePlaceCircle(e: React.MouseEvent<HTMLDivElement>) {
+    const { clientX, clientY } = e;
+    setPoints([...points, {
+      x: clientX,
+      y: clientY,
+    } ]);
+  }
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.tsx</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+    <div className="App" onClick={handlePlaceCircle}>
+      
     </div>
   );
 }
