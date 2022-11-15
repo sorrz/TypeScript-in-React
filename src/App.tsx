@@ -19,9 +19,17 @@ function App() {
     } ]);
   }
 
+  
+
+
   return (
     <div className="App" onClick={handlePlaceCircle}>
+      {points.map(point => ( <div className="point" style= {{
+        left: point.x  - 3 + "px",
+        top: point.y - 3 + "px", 
+      }}>
       
+      </div>))}
     </div>
   );
 }
